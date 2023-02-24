@@ -1,0 +1,27 @@
+ <span><h3>Météo SN</h3></span>
+    <img *ngIf="dataFromApi.temp" src="../assets/images.jpeg" width="2000" height="2000" alt="">
+
+    <div class="tempactu" *ngIf="dataFromApi.temp">
+        <h1>{{dataFromApi.temp | number: '1.0-0'}}°C</h1>
+    </div><br>
+
+    <div class="tempmaxi" *ngIf="dataFromApi.temp_max"> 
+         max : {{dataFromApi.temp_max | number: '1.0-0'}}°C
+         <hr>
+    </div><br>
+
+    <div class="tempmini" *ngIf="dataFromApi.temp_min"> 
+         min : {{dataFromApi.temp_min | number: '1.0-0'}}°C
+    </div><br>
+    <img  *ngIf="dataFromApi" class="thermo" src="" width="" height="" alt="">
+
+    <div *ngIf="dataFromApi.temp" class="dakar">
+        <p>ville : {{dataFromApi.ville}}.{{dataFromApi.country}}</p><br>
+
+    </div>
+
+
+ 
+
+
+

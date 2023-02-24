@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page Météo</title>
+
+</head>
+<body>
+    
+    <section class="vh-100" >
+        <div class="container py-5 h-100">
+          <form class="form-inline">
+
+            <div class="form-group col-md-2">
+              <input type="text" class="form-control" name="search"  placeholder="Ville/Pays/Regions" [(ngModel)]="dataFromApi.ville">
+            </div><br>
+            <button type="submit" (click)="recupereMeteo()" class="btn btn-primary mb-2">Rechercher</button>
+          </form>
+      
+          <div class="row d-flex justify-content-center align-items-center h-100" style="color: #282828;">
+            <div class="col-md-9 col-lg-7 col-xl-5">
+      
+              <div class="card mb-4 gradient-custom" style="border-radius: 25px;">
+                <div class="card-body p-4">
+      
+                  <div id="demo1" class="carousel slide" data-ride="carousel">
+                    <!-- Indicators -->
+                    <ul class="carousel-indicators mb-0">
+                      <li data-target="#demo1" data-slide-to="0" class="active"></li>
+                      <li data-target="#demo1" data-slide-to="1"></li>
+                      <li data-target="#demo1" data-slide-to="2"></li>
+                    </ul>
+                    <!-- Carousel inner -->
+                    <div class="carousel-inner" *ngIf="dataFromApi.temp">
+                      <div class="carousel-item active">
+                        <div class="d-flex justify-content-between mb-4 pb-2">
+                          <div>
+                            <h2 class="display-2" align="center"><strong>{{dataFromApi.temp | number: '1.0-0'}}°C</strong></h2>
+                            <p class="text-muted mb-0" *ngIf="dataFromApi.temp">ville : {{dataFromApi.ville}}.{{dataFromApi.country}}</p>
+                          </div>
+                          <div>
+                            <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-weather/ilu3.webp"
+                              width="150px">
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+      
+                </div>
+              </div>
+      
+              <div class="card mb-4" style="border-radius: 25px;">
+                <div class="card-body p-4">
+      
+                  <div id="demo2" class="carousel slide" data-ride="carousel">
+                    <!-- Indicators -->
+                    <ul class="carousel-indicators mb-0">
+                      <li data-target="#demo2" data-slide-to="0"></li>
+                      <li data-target="#demo2" data-slide-to="1" class="active"></li>
+                      <li data-target="#demo2" data-slide-to="2"></li>
+                    </ul>
+
+                    <!-- Carousel inner -->
+                      <!-- The slideshow -->
+                <div class="carousel-inner" *ngIf="dataFromApi.temp">
+                  <div class="carousel-item active">
+                    <div class="row">
+                      <div class="col">
+                        <div class="row row1 margegauche1">{{dataFromApi.temp-3  | number: '1.0-0'}}&deg;</div>
+                        <div class="row row2"><img class="img-fluid" src="https://img.icons8.com/ios/100/000000/sun.png"/></div>
+                        <div class="row row3 margegauche">12:00</div>
+                        <div class="row row4 margegauche1">PM</div>
+                      </div>
+                      <div class="col">
+                        <div class="row row1 margegauche1">{{dataFromApi.temp-4  | number: '1.0-0'}}&deg;</div>
+                        <div class="row row2"><img class="img-fluid" src="https://img.icons8.com/ios/100/000000/sun.png"/></div>
+                        <div class="row row3 margegauche">1:00</div>
+                        <div class="row row4 margegauche1">PM</div>
+                      </div>
+                      <div class="col">
+                        <div class="row row1 margegauche1">{{dataFromApi.temp-5  | number: '1.0-0'}}&deg;</div>
+                        <div class="row row2"><img class="img-fluid" src="https://img.icons8.com/windows/100/000000/cloud.png"/></div>
+                        <div class="row row3 margegauche">2:00</div>
+                        <div class="row row4 margegauche1">PM</div>
+                        <br>
+                      </div>
+                      <div class="col">
+                        <div class="row row1 margegauche1">{{dataFromApi.temp-7  | number: '1.0-0'}}&deg;</div>
+                        <div class="row row2"><img class="img-fluid" src="https://img.icons8.com/windows/100/000000/cloud.png"/></div>
+                        <div class="row row3 margegauche">3:00</div>
+                        <div class="row row4 margegauche1">PM</div>
+                      </div>
+                      <div class="col">
+                        <div class="row row1 margegauche1">{{dataFromApi.temp-8  | number: '1.0-0'}}&deg;</div>
+                        <div class="row row2"><img class="img-fluid" src="https://img.icons8.com/cotton/64/000000/rain--v3.png"/></div>
+                        <div class="row row3 margegauche">4:00</div>
+                        <div class="row row4 margegauche1">PM</div>
+                      </div>
+                    </div>
+                     
+                  </div>
+                </div>
+                  </div>
+      
+                </div>
+              </div>
+      
+              <div class="card" style="border-radius: 25px;">
+                <div class="card-body p-4">
+      
+                  <div id="demo3" class="carousel slide" data-ride="carousel">
+                    <!-- Indicators -->
+                    <ul class="carousel-indicators mb-0">
+                      <li data-target="#demo3" data-slide-to="0"></li>
+                      <li data-target="#demo3" data-slide-to="1"></li>
+                      <li data-target="#demo3" data-slide-to="2" class="active"></li>
+                    </ul>
+                  
+                   <!-- The slideshow -->
+                <div class="carousel-inner">
+                  <div class="carousel-item active">
+                    <div class="row">
+                      <div class="col">
+                        <div class="row row1 margegauche1">{{dataFromApi.temp-3  | number: '1.0-0'}}&deg;</div>
+                        <div class="row row2"><img class="img-fluid" src="https://img.icons8.com/ios/100/000000/sun.png"/></div>
+                        <div class="row row3 margegauche1">Lun</div>
+                      </div>
+                      <div class="col">
+                        <div class="row row1 margegauche1">{{dataFromApi.temp-4  | number: '1.0-0'}}&deg;</div>
+                        <div class="row row2"><img class="img-fluid" src="https://img.icons8.com/ios/100/000000/sun.png"/></div>
+                        <div class="row row3 margegauche1">Mar</div>
+                      </div>
+                      <div class="col">
+                        <div class="row row1 margegauche1">{{dataFromApi.temp-5  | number: '1.0-0'}}&deg;</div>
+                        <div class="row row2"><img class="img-fluid" src="https://img.icons8.com/windows/100/000000/cloud.png"/></div>
+                        <div class="row row3 margegauche1">Mer</div>
+                        <br>
+                      </div>
+                      <div class="col">
+                        <div class="row row1 margegauche1">{{dataFromApi.temp-6  | number: '1.0-0'}}&deg;</div>
+                        <div class="row row2"><img class="img-fluid" src="https://img.icons8.com/windows/100/000000/cloud.png"/></div>
+                        <div class="row row3 margegauche1">Jeu</div>
+                      </div>
+                      <div class="col">
+                        <div class="row row1 margegauche1">{{dataFromApi.temp-7  | number: '1.0-0'}}&deg;</div>
+                        <div class="row row2"><img class="img-fluid" src="https://img.icons8.com/cotton/64/000000/rain--v3.png"/></div>
+                        <div class="row row3 margegauche1">Ven</div>
+                      </div>
+                      <br>
+                    </div>
+                     
+                  </div>
+                </div>
+                  </div>
+      
+                </div>
+              </div>
+      
+            </div>
+          </div>
+      
+        </div>
+      </section>
+       
+</body>
+</html>
+
